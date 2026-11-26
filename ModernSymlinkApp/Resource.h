@@ -2,8 +2,8 @@
 // Microsoft Visual C++ generated include file.
 // Used by ModernSymlinkApp.rc
 
-// The helper has no user interface; its only resource is the executable's
-// icon, which the UAC prompt shows when the shell extension elevates it.
+// The ModernSymlink logo: the executable's icon (Start, UAC prompt) and the
+// icon of the dialog shown when the app is opened from Start.
 #define IDI_MODERNSYMLINKAPP			107
 
 // Next default values for new objects
