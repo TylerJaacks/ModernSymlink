@@ -1,0 +1,20 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="ARM" />
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="ModernSymlinkApp/ModernSymlinkApp.vcxproj" Id="ff18606a-bbb1-410c-8231-1e030fbfec9b">
+    <Platform Solution="*|ARM" Project="x64" />
+    <Platform Solution="*|ARM64" Project="x64" />
+  </Project>
+  <Project Path="ModernSymlinkPackage/ModernSymlinkPackage.wapproj" Type="c7167f0d-bc9f-4e6e-afe1-012c56b48db5" Id="6cf679de-95ce-4990-adaa-353d3b0ddfa5">
+    <Deploy />
+  </Project>
+  <Project Path="ModernSymlinkShell/ModernSymlinkShell.vcxproj" Id="06b80e6a-018b-4549-810b-d37447eafa24">
+    <Platform Solution="*|ARM" Project="x64" />
+    <Platform Solution="*|ARM64" Project="x64" />
+  </Project>
+</Solution>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+	xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+	xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+	xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+	xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
+	xmlns:desktop5="http://schemas.microsoft.com/appx/manifest/desktop/windows10/5"
+	xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+	IgnorableNamespaces="uap rescap desktop4 desktop5 com">
+
+  <Identity
+    Name="e169d1ab-584b-4a87-84bd-4478d56179a3"
+    Publisher="CN=tylerjaacks"
+    Version="1.0.0.0" />
+
+  <Properties>
+    <DisplayName>ModernSymlinkPackage</DisplayName>
+    <PublisherDisplayName>tylerjaacks</PublisherDisplayName>
+    <Logo>Images\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.14393.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+	<Applications>
+		<Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
+			<uap:VisualElements
+				DisplayName="ModernSymlinkPackage"
+				Description="ModernSymlinkPackage"
+				BackgroundColor="transparent"
+				AppListEntry="none"
+				Square150x150Logo="Images\Square150x150Logo.png"
+				Square44x44Logo="Images\Square44x44Logo.png">
+				<uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
+				<uap:SplashScreen Image="Images\SplashScreen.png" />
+			</uap:VisualElements>
+			<Extensions>
+				<desktop4:Extension Category="windows.fileExplorerContextMenus">
+					<desktop4:FileExplorerContextMenus>
+						<!-- One verb everywhere: it shows as "Pick Link Source" until a source is picked and
+						     the target is a folder, then as the "Drop As..." submenu. The packaged schema only
+						     allows the item types *, .ext, Directory and Directory\Background. -->
+						<desktop5:ItemType Type="*">
+							<desktop5:Verb Id="ModernSymlink" Clsid="7B3C1E52-9A4D-4F6B-8C2E-5D1A0F3B9E71" />
+						</desktop5:ItemType>
+						<desktop5:ItemType Type="Directory">
+							<desktop5:Verb Id="ModernSymlink" Clsid="7B3C1E52-9A4D-4F6B-8C2E-5D1A0F3B9E71" />
+						</desktop5:ItemType>
+						<desktop5:ItemType Type="Directory\Background">
+							<desktop5:Verb Id="ModernSymlink" Clsid="7B3C1E52-9A4D-4F6B-8C2E-5D1A0F3B9E71" />
+						</desktop5:ItemType>
+					</desktop4:FileExplorerContextMenus>
+				</desktop4:Extension>
+
+				<com:Extension Category="windows.comServer">
+					<com:ComServer>
+						<com:SurrogateServer DisplayName="ModernSymlink Shell Extension">
+							<com:Class Id="7B3C1E52-9A4D-4F6B-8C2E-5D1A0F3B9E71"
+							           Path="ModernSymlinkShell\ModernSymlinkShell.dll"
+							           ThreadingModel="STA" />
+						</com:SurrogateServer>
+					</com:ComServer>
+				</com:Extension>
+			</Extensions>
+		</Application>
+	</Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>
