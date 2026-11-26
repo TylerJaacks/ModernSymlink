@@ -1,0 +1,10 @@
+// Resources of the shell extension DLL.
+
+#include "ShellResource.h"
+#include <winres.h>
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+// The ModernSymlink logo, generated from Assets\Icon.png. The context-menu
+// entry points Explorer at this resource (see CExplorerCommandVerb::GetIcon).
+IDI_MODERNSYMLINK       ICON        "..\\Assets\\Icon.ico"

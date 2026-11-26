@@ -6,6 +6,7 @@
 
 #include "Dll.h"
 #include "ExplorerCommands.h"
+#include "ShellResource.h"
 
 static constexpr WCHAR c_szDropAsDisplayName[] = L"Drop As...";
 static constexpr WCHAR c_szDropAsToolTip[] = L"Create a link to the picked source in this folder";
@@ -241,24 +242,26 @@ IExplorerCommand* CExplorerCommandVerb::PickVerbUnlessDropping(IShellItemArray* 
 	return ShowsDropMenu(pItems) ? nullptr : _subCommands[c_iPickLinkSource];
 }
 
-// Icon location string ("<path>,<index or -resid>") of a Windows stock icon,
-// so the menu entry has an icon without the DLL shipping one.
-static HRESULT GetStockIconLocation(SHSTOCKICONID siid, LPWSTR* ppszIcon)
+EXTERN_C IMAGE_DOS_HEADER __ImageBase;
+
+// Icon location string ("<this DLL's path>,-<resource id>") of an icon
+// embedded in this DLL, which Explorer loads itself.
+static HRESULT GetModuleIconLocation(int resourceId, LPWSTR* ppszIcon)
 {
 	*ppszIcon = nullptr;
 
-	SHSTOCKICONINFO sii = { .cbSize = sizeof(sii) };
+	WCHAR modulePath[MAX_PATH];
 
-	HRESULT hr = SHGetStockIconInfo(siid, SHGSI_ICONLOCATION, &sii);
+	const DWORD cch = GetModuleFileNameW(reinterpret_cast<HMODULE>(&__ImageBase), modulePath, ARRAYSIZE(modulePath));
 
-	if (FAILED(hr))
+	if (cch == 0 || cch == ARRAYSIZE(modulePath))
 	{
-		return hr;
+		return cch == 0 ? HRESULT_FROM_WIN32(GetLastError()) : HRESULT_FROM_WIN32(ERROR_INSUFFICIENT_BUFFER);
 	}
 
 	WCHAR location[MAX_PATH + 16];
 
-	hr = StringCchPrintfW(location, ARRAYSIZE(location), L"%s,%d", sii.szPath, sii.iIcon);
+	const HRESULT hr = StringCchPrintfW(location, ARRAYSIZE(location), L"%s,-%d", modulePath, resourceId);
 
 	return SUCCEEDED(hr) ? SHStrDupW(location, ppszIcon) : hr;
 }
@@ -280,8 +283,8 @@ IFACEMETHODIMP CExplorerCommandVerb::GetIcon(IShellItemArray* pShellItemArray, L
 {
 	UNREFERENCED_PARAMETER(pShellItemArray);
 
-	// the shortcut arrow Windows itself uses for links, in both shapes
-	return GetStockIconLocation(SIID_LINK, ppszIcon);
+	// the ModernSymlink logo, in both shapes
+	return GetModuleIconLocation(IDI_MODERNSYMLINK, ppszIcon);
 }
 
 IFACEMETHODIMP CExplorerCommandVerb::GetToolTip(IShellItemArray* pShellItemArray, LPWSTR* ppszInfotip)

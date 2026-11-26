@@ -146,6 +146,9 @@
   <ItemGroup>
     <ClCompile Include="ModernSymlinkApp.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ModernSymlinkApp.rc" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

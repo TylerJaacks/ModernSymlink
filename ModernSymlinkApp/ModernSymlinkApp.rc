@@ -1,0 +1,10 @@
+// Resources of the elevated helper. It has no user interface; its icon is what
+// the UAC prompt shows when the shell extension elevates it.
+
+#include "Resource.h"
+#include <winres.h>
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+// The ModernSymlink logo, generated from Assets\Icon.png.
+IDI_MODERNSYMLINKAPP    ICON        "..\\Assets\\Icon.ico"

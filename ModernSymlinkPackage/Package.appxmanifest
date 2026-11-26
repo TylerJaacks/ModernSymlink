@@ -10,13 +10,13 @@
 	IgnorableNamespaces="uap rescap desktop4 desktop5 com">
 
   <Identity
-    Name="e169d1ab-584b-4a87-84bd-4478d56179a3"
-    Publisher="CN=tylerjaacks"
+    Name="46866TylerMediaGroupLLC.ModernSymlink"
+    Publisher="CN=ED16EEFB-1379-495F-AB07-50542806888A"
     Version="1.0.0.0" />
 
   <Properties>
-    <DisplayName>ModernSymlinkPackage</DisplayName>
-    <PublisherDisplayName>tylerjaacks</PublisherDisplayName>
+    <DisplayName>Modern Symlink</DisplayName>
+    <PublisherDisplayName>Tyler Media Group LLC</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
@@ -32,13 +32,14 @@
 	<Applications>
 		<Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
 			<uap:VisualElements
-				DisplayName="ModernSymlinkPackage"
+				DisplayName="Modern Symlink"
 				Description="ModernSymlinkPackage"
 				BackgroundColor="transparent"
 				AppListEntry="none"
 				Square150x150Logo="Images\Square150x150Logo.png"
 				Square44x44Logo="Images\Square44x44Logo.png">
-				<uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
+				<uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png"  Square71x71Logo="Images\SmallTile.png" Square310x310Logo="Images\LargeTile.png">
+				</uap:DefaultTile >
 				<uap:SplashScreen Image="Images\SplashScreen.png" />
 			</uap:VisualElements>
 			<Extensions>

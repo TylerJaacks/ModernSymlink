@@ -162,6 +162,7 @@
     <ClInclude Include="Dll.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ShellHelpers.h" />
+    <ClInclude Include="ShellResource.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateStore.h" />
   </ItemGroup>
@@ -185,6 +186,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="StateStore.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ModernSymlinkShell.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ModernSymlinkShell.def" />

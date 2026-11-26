@@ -1,17 +1,25 @@
-.vs/*
-x64/*
-packages/*
-ModernSymlink.sln.DotSettings.user
-/ModernSymlinkApp/ModernSymlinkApp/x64
-/ModernSymlinkApp/x64
-/ModernSymlinkApp/ModernSymlinkApp.vcxproj.filters
-/ModernSymlinkApp/ModernSymlinkApp.vcxproj.user
-/ModernSymlinkPackage/AppPackages/ModernSymlinkPackage_1.0.0.0_x64_Debug_Test
-/ModernSymlinkPackage/bin/x64/Debug
-/ModernSymlinkPackage/ModernSymlinkPackage.assets.cache
-/ModernSymlinkPackage/ModernSymlinkPackage.wapproj.user
-/ModernSymlinkPackage/obj
-/ModernSymlinkShell/ModernSy.06b80e6a/x64
-/ModernSymlinkShell/x64
-/ModernSymlinkShell/ModernSymlinkShell.vcxproj.filters
-/ModernSymlinkShell/ModernSymlinkShell.vcxproj.user
+# Visual Studio
+.vs/
+*.user
+*.aps
+
+# C++ build output (per-project and solution-level, any platform)
+x64/
+ARM64/
+Win32/
+Debug/
+Release/
+
+# NuGet packages restored for the solution
+packages/
+
+# Packaging project output
+bin/
+obj/
+AppPackages/
+BundleArtifacts/
+*.assets.cache
+
+# Solution Explorer folder layout, kept per machine
+*.vcxproj.filters
+/ModernSymlinkPackage/Package.StoreAssociation.xml
